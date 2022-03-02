@@ -155,3 +155,11 @@ resource "aws_security_group" "allow_https" {
     Name = "allow_https"
   }
 }
+resource "aws_instance" "webserver" {
+  ami = "ami-04505e74c0741db8d"
+  security_groups = [aws_security_group.allow_ssh.id]
+  instance_type = "t2.micro"
+  tags = {
+    Name = "web_server"
+  }
+}
